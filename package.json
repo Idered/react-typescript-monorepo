@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf ./packages/*/lib",
+    "build": "yarn build:cjs && yarn build:esm",
+    "build:cjs": "yarn module:cjs && tsc --build tsconfig.project.json",
+    "build:esm": "yarn module:esm && tsc --build tsconfig.project.json",
+    "dev:cjs": "yarn build:cjs --watch",
+    "dev:esm": "yarn build:esm --watch",
+    "module:cjs": "sed -i -e '0,/target/{s:esnext:es5:}' -e '0,/module/{s:esnext:commonjs:}' ./tsconfig.json && sed -i -e s:lib/esm:lib/cjs: packages/**/tsconfig.json",
+    "module:esm": "sed -i -e s:es5:esnext: -e s:commonjs:esnext: ./tsconfig.json && sed -i -e s:lib/cjs:lib/esm: packages/**/tsconfig.json"
+  },
+  "dependencies": {
+    "typescript": "3.3.4000"
+  }
+}

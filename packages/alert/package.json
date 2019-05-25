@@ -1,0 +1,14 @@
+{
+  "name": "@scope/alert",
+  "version": "0.1.0",
+  "main": "lib/cjs/index.js",
+  "typings": "lib/cjs/index.d.ts",
+  "module": "lib/esm/index.js",
+  "devDependencies": {
+    "@types/react": "^16.8.18",
+    "react": "^16.8.6"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  }
+}
