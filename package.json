@@ -18,6 +18,5 @@
   "dependencies": {
     "lerna": "3.14.1",
     "typescript": "3.3.4000"
-  },
-  "name": "react-typescript-monorepo-npm"
+  }
 }
