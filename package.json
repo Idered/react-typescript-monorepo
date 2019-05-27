@@ -3,6 +3,7 @@
   "workspaces": [
     "packages/*"
   ],
+  "license": "MIT",
   "scripts": {
     "prebuild": "rm -rf ./packages/*/lib",
     "build": "yarn build:cjs && yarn build:esm",
