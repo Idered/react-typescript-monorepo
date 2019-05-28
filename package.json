@@ -12,9 +12,19 @@
     "dev:cjs": "yarn build:cjs --watch",
     "dev:esm": "yarn build:esm --watch",
     "module:cjs": "sed -i -e '0,/target/{s:esnext:es5:}' -e '0,/module/{s:esnext:commonjs:}' ./tsconfig.json && sed -i -e s:lib/esm:lib/cjs: packages/**/tsconfig.json",
-    "module:esm": "sed -i -e s:es5:esnext: -e s:commonjs:esnext: ./tsconfig.json && sed -i -e s:lib/cjs:lib/esm: packages/**/tsconfig.json"
+    "module:esm": "sed -i -e s:es5:esnext: -e s:commonjs:esnext: ./tsconfig.json && sed -i -e s:lib/cjs:lib/esm: packages/**/tsconfig.json",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "typescript": "3.3.4000"
+  },
+  "devDependencies": {
+    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@babel/core": "^7.4.5",
+    "babel-loader": "^8.0.6"
   }
 }
