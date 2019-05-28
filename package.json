@@ -12,9 +12,12 @@
     "dev:cjs": "yarn build:cjs --watch",
     "dev:esm": "yarn build:esm --watch",
     "module:cjs": "sed -i -e '0,/target/{s:esnext:es5:}' -e '0,/module/{s:esnext:commonjs:}' ./tsconfig.json && sed -i -e s:lib/esm:lib/cjs: packages/**/tsconfig.json",
-    "module:esm": "sed -i -e s:es5:esnext: -e s:commonjs:esnext: ./tsconfig.json && sed -i -e s:lib/cjs:lib/esm: packages/**/tsconfig.json"
+    "module:esm": "sed -i -e s:es5:esnext: -e s:commonjs:esnext: ./tsconfig.json && sed -i -e s:lib/cjs:lib/esm: packages/**/tsconfig.json",
+    "prerelease": "yarn build",
+    "release": "lerna publish"
   },
   "dependencies": {
+    "lerna": "3.14.1",
     "typescript": "3.3.4000"
   }
 }
