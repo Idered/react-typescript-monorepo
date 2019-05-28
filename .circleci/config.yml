@@ -1,0 +1,42 @@
+version: 2.1
+
+jobs:
+  build-storybook:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run:
+          name: Create GitHub Deployment
+          command: ./tasks/deployment/start.sh > deployment
+      - restore_cache:
+          keys:
+            - cache-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - cache-
+      - run:
+          name: Installing Dependencies
+          command: yarn
+      - run:
+          name: Build Storybook
+          command: yarn build-storybook
+      - store_artifacts:
+          path: storybook-static
+      - run:
+          name: Add GitHub Deployment success status
+          command: ./tasks/deployment/end.sh success
+          when: on_success
+      - run:
+          name: Add GitHub Deployment error status
+          command: ./tasks/deployment/end.sh error
+          when: on_fail
+      - save_cache:
+          paths:
+            - node_modules
+          key: cache-{{ checksum "package.json" }}
+
+workflows:
+  deploy:
+    jobs:
+      - build-storybook
