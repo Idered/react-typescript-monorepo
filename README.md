@@ -1,6 +1,6 @@
 # Learn how to configure monorepo for React components using only typescript
 
-Blog post will be added soon.
+View [blog post](https://kasper.io/setup-monorepo-for-react-components-using-typescript/) for more information.
 
 ## Add Lerna and manage package publishing with ease
 
